@@ -1,4 +1,7 @@
+#include <iostream>
+using namespace std;
+
 int main(){
-	std::cout<<"lolilol"<<endl;
+	cout<<"lolilol"<<endl;
 	return 0;
 }
