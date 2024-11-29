@@ -12,7 +12,7 @@ void Fichier::stockerDonnees(){
     ofstream fichier;
 
     //sinon on ouvre en écriture à la suite
-    fichier.open(nomFichier.c_str(), ios::out | ios::app);
+    fichier.open(path.c_str(), ios::out | ios::app);
 
     if (fichier) {
         //rentrer la grille
@@ -30,19 +30,19 @@ void Fichier::lireFichier(){
         if(fichier){
             cout << "Fichier ouvert avec succès" << endl;
             while (getline(fichier, strChiffre, " ")){ //lit le contenu
-                contenu + = strChiffre; //stocke tout dans un tableau
+                contenu = contenu + strChiffre; //stocke tout dans un tableau
                 cout << contenu;
             }
             cout << endl;
-            setNbLignes(atoi(contenu));
+            setNbLignes(stoi(contenu));
             contenu="";
 
             while (getline(fichier, strChiffre, " ")){ //lit le contenu
-                contenu + = strChiffre; //stocke tout dans un tableau
+                contenu = contenu + strChiffre; //stocke tout dans un tableau
                 cout << contenu;
             }
             cout << endl;
-            setNbColonnes(atoi(contenu));
+            setNbColonnes(stoi(contenu));
             contenu="";
 
             fichier.close(); //ferme le fichier
@@ -51,14 +51,16 @@ void Fichier::lireFichier(){
         }
 }
 
-Cellule * cell stock[getNbLignes()][getNbColonnes()];
+Cellule * stock[getNbLignes()][getNbColonnes()];
 
 void Fichier::initGrille(){
+    int nb, duree;
+
     cout << "Combien d'itérations voulez-vous que le programme effectuer avant de s'arrêter?" << endl;
-    cin >> int nb;
+    cin >> nb;
     setNbIteration(nb);
     cout << "Quelle durée entre deux itérations voulez-vous instaurer?" << endl;
-    cin >> int duree;
+    cin >> duree;
     setDureeIteration(duree);
 
     Grille *g = new Grille (getNbColonnes(), getNbLignes(), getNbIteration(), getDureeIteration());
@@ -70,7 +72,7 @@ void Fichier::initCellule(){
         for (int j=0; j<getNbColonnes(); j++){
             //rajouter du code pour sauter la 1e ligne
             getline(fichier, contenu);
-            
+
             if (contenu=="0"){
                 setEtatCellule(false);
             } else {
