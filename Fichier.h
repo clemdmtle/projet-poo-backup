@@ -1,4 +1,4 @@
-#include <String> 
+#include <string> 
 
 class Fichier {
     string path;

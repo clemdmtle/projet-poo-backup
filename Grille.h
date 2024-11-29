@@ -1,3 +1,7 @@
+#include <string>
+#include <iostream>
+using namespace std;
+
 class Grille {
     int nbColonnes, nbLignes, nbIteration, dureeIteration, count;
 
@@ -7,5 +11,5 @@ class Grille {
     void actualiserGrille();
     void afficherGrille();
     int verifierVoisins();
-    bool verifierEtatJeu()
+    bool verifierEtatJeu();
 };
