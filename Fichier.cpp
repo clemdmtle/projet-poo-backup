@@ -2,11 +2,11 @@
 #include <fstream>
 #include <string>
 #include <iostream>
+#include "Cellule.cpp"
+#include "Grille.cpp"
 using namespace std;
 
-int nbLignes, nbColonnes;
-class Cellule;
-
+int a=0; 
 
 void Fichier::stockerDonnees(){
     ofstream fichier;
@@ -63,7 +63,7 @@ void Fichier::initGrille(){
     cin >> duree;
     setDureeIteration(duree);
 
-    Grille *g = new Grille (getNbColonnes(), getNbLignes(), getNbIteration(), getDureeIteration());
+    Grille *g = new Grille (g->getNbColonnes(), g->getNbLignes(), getNbIteration(), getDureeIteration());
 }
 
 void Fichier::initCellule(){
@@ -74,13 +74,19 @@ void Fichier::initCellule(){
             getline(fichier, contenu);
 
             if (contenu=="0"){
-                setEtatCellule(false);
+                ->setEtatCellule(false);
             } else {
                 setEtatCellule(true);
             }
             setEtatPrecedent(false);
-            celluleActive *c1 = new celluleActive(getEtatCellule, getEtatPrecedent);
-            stock[i][j]=c1;
+            celluleActive *c1 = new celluleActive(getEtatCellule(), getEtatPrecedent());
+            Stock[i][j]=c1;
+            Transition[i][j]=c1;
         }
     }
+}
+
+void Fichier::creerFichier(){
+    string nom_fichier= "<" + path + ">" + "_out_" + a;
+
 }

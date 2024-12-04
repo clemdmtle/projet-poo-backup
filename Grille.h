@@ -3,13 +3,22 @@
 using namespace std;
 
 class Grille {
-    int nbColonnes, nbLignes, nbIteration, dureeIteration, count;
+    private:
+    Cellule** Transition[][];
+    Cellule** Stock[][];
+    int nbColonnes, nbLignes;
 
     public:
-    Grille(int nbColonnes, int nbLignes, int nbIteration, int dureeIteration){}
+    Grille(int nbColonnes, int nbLignes){
+        this->nbColonnes=nbColonnes;
+        this->nbLignes=nbLignes;
+        Stock[nbColonnes][nbLignes];
+        Transition[nbColonnes][nbLignes];
 
-    void actualiserGrille();
-    void afficherGrille();
-    int verifierVoisins();
-    bool verifierEtatJeu();
+    }
+
+    void setStock(int ligne, int colonne, int etatCellule, int etatPrecedent);
+    void setTransition(int ligne, int colonne, int etatCellule, int etatPrecedent);
+    int getNbLignes();
+    int getNbColonnes();
 };

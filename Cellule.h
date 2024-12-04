@@ -9,8 +9,8 @@ protected:
 public:
   Cellule();
   Cellule(bool ec);
-  bool getEtatCellule();
-  void setEtatCellule(bool e);
+  virtual bool getEtatCellule();
+  virtual void setEtatCellule(bool e);
   virtual bool changementEtat();
   virtual ~Cellule();
 };

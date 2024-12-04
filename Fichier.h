@@ -7,6 +7,7 @@ class Fichier {
     Fichier(string path){}
 
     void stockerDonnees();
+    void creerFichier();
     void lireFichier();
     void initGrille();
     void initCellule();

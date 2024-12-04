@@ -1,4 +1,6 @@
-#include "ActualiserJeu.cpp"
+#include "ActualiserJeu.h"
+#include "Cellule.cpp"
+#include "CelluleActive.cpp"
 
 bool ActualiserJeu::changementEtat(){
     if (getEtatCellule(Stock[i][j])==true){
