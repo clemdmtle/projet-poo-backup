@@ -26,7 +26,7 @@ int ActualiserJeu::verifierVoisins(int l, int c){
         if (Stock[l+1][c].getEtatCellule()==true){
             count++;
         }
-    }else if(l==getNbLignes() && c==0){
+    }else if(l==g->getNbLignes() && c==0){
         for (l=0; l=1; l++){
             if (Stock[l][c-1].getEtatCellule()==true){
                 count++;
@@ -35,7 +35,7 @@ int ActualiserJeu::verifierVoisins(int l, int c){
         if (Stock[l+1][c].getEtatCellule()==true){
             count++;
         }
-    }else if (l==0 && c==getNbColonnes()){
+    }else if (l==0 && c==g->getNbColonnes()){
         for (l=-1; l=0; l++){
             if (Stock[i][j+1].getEtatCellule()==true){
                 count++;
@@ -44,7 +44,7 @@ int ActualiserJeu::verifierVoisins(int l, int c){
         if (Stock[l-1][c].getEtatCellule()==true){
             count++;
         }
-    }else if (l==getNbLignes() && c==getNbColonnes()){
+    }else if (l==g->getNbLignes() && c==g->getNbColonnes()){
         for (c=-1; c=0; c++){
             if (Stock[l-1][c].getEtatCellule()==true){
                 count++;
