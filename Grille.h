@@ -31,6 +31,6 @@ class Grille {
     void setNbColonnes(int nb);
     Cellule* getStock(int ligne, int colonne);
     Cellule* getTransition(int ligne, int colonne);
-    bool EtatCellule(int l, int c);
-    bool EtatPrecedent(int l, int c);
+    bool etatCellule(int l, int c);
+    bool etatPrecedent(int l, int c);
 };

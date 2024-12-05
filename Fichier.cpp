@@ -1,3 +1,4 @@
+#pragma once
 #include "Fichier.h"
 #include <fstream>
 #include <fstream>
@@ -31,7 +32,7 @@ void Fichier::lireFichier(){
 
         if(fichier){
             cout << "Fichier ouvert avec succès" << endl;
-            while (getline(fichier, strChiffre, " ")){ //lit le contenu
+            while (getline(fichier, strChiffre, ' ')){ //lit le contenu
                 contenu = contenu + strChiffre; //stocke tout dans un tableau
                 cout << contenu;
             }
@@ -39,7 +40,7 @@ void Fichier::lireFichier(){
             g->setNbLignes(stoi(contenu));
             contenu="";
 
-            while (getline(fichier, strChiffre, " ")){ //lit le contenu
+            while (getline(fichier, strChiffre, ' ')){ //lit le contenu
                 contenu = contenu + strChiffre; //stocke tout dans un tableau
                 cout << contenu;
             }
@@ -53,12 +54,10 @@ void Fichier::lireFichier(){
         }
 }
 
-Grille* Fichier::initGrille(){
+auto Fichier::initGrille(){
     int nb, duree;
 
-
     Grille *g = new Grille (g->getNbColonnes(), g->getNbLignes());
-
     return g;
 }
 
@@ -77,8 +76,8 @@ void Fichier::initCellule(){
                 !etat;
             }
             CelluleActive *c1 = new CelluleActive(etat);
-            g->Stock[i][j]=c1;
-            g->Transition[i][j]=c1;
+            g->setStock(i,j)=c1;
+            g->setTransition[i][j]=c1;
         }
     }
 }

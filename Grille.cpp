@@ -1,13 +1,13 @@
 #include "Grille.h"
 
 void Grille::setStock(int ligne, int colonne, int etatCellule, int etatPrecedent){
-    Stock[ligne][colonne].setEtatCellule(etatCellule);
-    Stock[ligne][colonne].setEtatPrecedent(etatPrecedent);
+    Stock[ligne][colonne]->setEtatCellule(etatCellule);
+    Stock[ligne][colonne]->setEtatPrecedent(etatPrecedent);
 }
 
 void Grille::setTransition(int ligne, int colonne, int etatCellule, int etatPrecedent){
-    Transition[ligne][colonne].setEtatCellule(etatCellule);
-    Transition[ligne][colonne].setEtatPrecedent(etatPrecedent);
+    Transition[ligne][colonne]->setEtatCellule(etatCellule);
+    Transition[ligne][colonne]->setEtatPrecedent(etatPrecedent);
 }
 
 Cellule* Grille::getStock(int ligne, int colonne){
@@ -34,14 +34,14 @@ void Grille::setNbColonnes(int nb){
     nbColonnes=nb;
 }
 
-bool etatCellule(int l, int c){
+bool Grille::etatCellule(int l, int c){
     l=(l+nbLignes)%nbLignes;
     c=(c+nbColonnes)%nbColonnes;
-    bool etat=g->getStock(l,c)->getEtatCellule();
+    bool etat=getStock(l,c)->getEtatCellule();
 }
 
-bool etatPrecedent(int l, int c){
+bool Grille::etatPrecedent(int l, int c){
     l=(l+nbLignes)%nbLignes;
     c=(c+nbColonnes)%nbColonnes;
-    bool etat=g->getStock(l,c)->getEtatPrecedent();
+    bool etat=getStock(l,c)->getEtatPrecedent();
 }
