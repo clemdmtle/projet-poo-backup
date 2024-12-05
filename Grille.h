@@ -8,7 +8,7 @@ using namespace std;
 class Grille {
     private:
     int nbColonnes, nbLignes;
-    Cellule** Stock[nbLignes][nbColonnes];
+    Cellule*** Stock[nbLignes][nbColonnes];
     Cellule** Transition[nbLignes][nbColonnes];
     
 
@@ -29,4 +29,6 @@ class Grille {
     void setNbColonnes(int nb);
     Cellule* getStock(int ligne, int colonne);
     Cellule* getTransition(int ligne, int colonne);
+    bool EtatCellule(int l, int c);
+    bool EtatPrecedent(int l, int c);
 };

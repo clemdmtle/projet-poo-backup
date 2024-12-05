@@ -33,3 +33,15 @@ void Grille::setNbLignes(int nb){
 void Grille::setNbColonnes(int nb){
     nbColonnes=nb;
 }
+
+bool etatCellule(int l, int c){
+    l=(l+nbLignes)%nbLignes;
+    c=(c+nbColonnes)%nbColonnes;
+    bool etat=g->getStock(l,c)->getEtatCellule();
+}
+
+bool etatPrecedent(int l, int c){
+    l=(l+nbLignes)%nbLignes;
+    c=(c+nbColonnes)%nbColonnes;
+    bool etat=g->getStock(l,c)->getEtatPrecedent();
+}

@@ -56,6 +56,7 @@ void Fichier::lireFichier(){
 Grille* Fichier::initGrille(){
     int nb, duree;
 
+
     Grille *g = new Grille (g->getNbColonnes(), g->getNbLignes());
 
     return g;
@@ -83,5 +84,5 @@ void Fichier::initCellule(){
 }
 
 void Fichier::creerFichier(){
-    string nom_fichier= "<" + path + ">" + "_out_" + a;
+    string nom_fichier= "<" + path + ">" + "_out_" + to_string(a);
 }

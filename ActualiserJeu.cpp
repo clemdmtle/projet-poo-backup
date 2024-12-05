@@ -10,7 +10,6 @@ int count=0;
 int nbLignes=g->getNbLignes();
 int nbColonnes=g->getNbColonnes();
 
-
 bool ActualiserJeu::changementEtat(int l, int c){
     if ((g->getStock(l,c)->getEtatCellule())==true){
         if (2<=count<=3){
@@ -27,17 +26,15 @@ bool ActualiserJeu::changementEtat(int l, int c){
 
 int ActualiserJeu::verifierVoisins(int l, int c){
     
-    g->getStock(l, c)->setEtatPrecedent(g->getStock(l, c)->getEtatCellule());
+    g->getStock(l, c)->setEtatPrecedent(etatCellule(l,c));
 
  
     for (c=-1; c=1; c++){
         for (l=-1; l=1; l++){
             if (c==0 && l==0){
                 continue;
-            } else if (c==0){
-
-            }else {
-                if (g->getStock(l,c)->getEtatCellule()==true){
+            }else{
+                if (etatCellule(l,c)==true){
                 count++;
                 }
             }
@@ -49,20 +46,8 @@ int ActualiserJeu::verifierVoisins(int l, int c){
 
 void ActualiserJeu::actualiserGrille(){
 
-
-
-
     for (int l=0; l<nbLignes; l++){
         for (int c=0; c<nbColonnes; c++){
-            if (c==0){
-                g->getStock(l, c-1)->getEtatCellule()=g->getStock(l, nbColonnes)->getEtatCellule();
-            }else if (c==nbColonnes){
-                g->getStock(l, c+1)->getEtatCellule()=g->getStock(l, 0)->getEtatCellule();
-            }else if (l==0){
-                g->getStock(l-1,)->getEtatCellule()=g->getStock(l, nbColonnes)->getEtatCellule();
-            }else if (l==nbLignes){
-
-            }
             verifierVoisins(l, c);
         }
     }
@@ -74,7 +59,7 @@ bool ActualiserJeu::verifierEtatJeu(){
 
     for (int i=0; i<nbLignes; i++){
         for (int j=0; j<g->getNbColonnes(); j++){
-            if (g->getStock(i,j).getEtatCellule()!=g->getStock(i, j).getEtatPrecedent()){
+            if (etatCellule(i,j)!=etatPrecedent(i,j)){
                 !etatJeu;
             }
         }
