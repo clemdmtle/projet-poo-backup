@@ -1,5 +1,7 @@
 #include <string>
 #include <iostream>
+#include <vector>;
+#include "Fichier.cpp"
 using namespace std;
 
 
@@ -8,16 +10,16 @@ using namespace std;
 class Grille {
     private:
     int nbColonnes, nbLignes;
-    Cellule*** Stock[nbLignes][nbColonnes];
-    Cellule** Transition[nbLignes][nbColonnes];
+    vector<vector <Cellule*>> Stock;
+    vector<vector <Cellule*>> Transition;
     
 
     public:
     Grille(int nbColonnes, int nbLignes){
         this->nbColonnes=nbColonnes;
         this->nbLignes=nbLignes;
-        Cellule** Stock[nbColonnes][nbLignes];
-        Cellule** Transition[nbColonnes][nbLignes];
+        Stock=vector<vector <Cellule*>>(nbLignes, vector <Cellule*>(nbColonnes, nullptr));
+        Transition=vector<vector <Cellule*>>(nbLignes, vector <Cellule*>(nbColonnes, nullptr));
 
     }
 
