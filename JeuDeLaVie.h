@@ -7,4 +7,4 @@ class JeuDeLaVie {
         this->nbIteration=nbIteration;
         this->dureeIteration=dureeIteration;
     }
-}
+};

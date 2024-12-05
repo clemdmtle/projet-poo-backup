@@ -9,6 +9,6 @@ class Fichier {
     void stockerDonnees();
     void creerFichier();
     void lireFichier();
-    void initGrille();
+    Grille* initGrille();
     void initCellule();
 };

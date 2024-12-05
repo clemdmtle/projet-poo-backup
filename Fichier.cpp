@@ -1,12 +1,15 @@
 #include "Fichier.h"
 #include <fstream>
+#include <fstream>
 #include <string>
 #include <iostream>
 #include "Cellule.cpp"
 #include "Grille.cpp"
+#include "CelluleActive.cpp"
 using namespace std;
 
 int a=0; 
+string contenu = "";
 
 void Fichier::stockerDonnees(){
     ofstream fichier;
@@ -24,7 +27,6 @@ void Fichier::stockerDonnees(){
 
 void Fichier::lireFichier(){
     ifstream fichier(path.c_str(), ios::in); //ouvre le fichier
-        string contenu = "";
         string strChiffre;
 
         if(fichier){
@@ -34,7 +36,7 @@ void Fichier::lireFichier(){
                 cout << contenu;
             }
             cout << endl;
-            setNbLignes(stoi(contenu));
+            g->setNbLignes(stoi(contenu));
             contenu="";
 
             while (getline(fichier, strChiffre, " ")){ //lit le contenu
@@ -42,7 +44,7 @@ void Fichier::lireFichier(){
                 cout << contenu;
             }
             cout << endl;
-            setNbColonnes(stoi(contenu));
+            g->setNbColonnes(stoi(contenu));
             contenu="";
 
             fichier.close(); //ferme le fichier
@@ -51,42 +53,35 @@ void Fichier::lireFichier(){
         }
 }
 
-Cellule * stock[getNbLignes()][getNbColonnes()];
-
-void Fichier::initGrille(){
+Grille* Fichier::initGrille(){
     int nb, duree;
 
-    cout << "Combien d'itérations voulez-vous que le programme effectuer avant de s'arrêter?" << endl;
-    cin >> nb;
-    setNbIteration(nb);
-    cout << "Quelle durée entre deux itérations voulez-vous instaurer?" << endl;
-    cin >> duree;
-    setDureeIteration(duree);
+    Grille *g = new Grille (g->getNbColonnes(), g->getNbLignes());
 
-    Grille *g = new Grille (g->getNbColonnes(), g->getNbLignes(), getNbIteration(), getDureeIteration());
+    return g;
 }
 
 void Fichier::initCellule(){
+    int etat=false;
+
     ifstream fichier(path.c_str(), ios::in); //ouvre le fichier
-    for (int i=0; i<getNbLignes(); i++){
-        for (int j=0; j<getNbColonnes(); j++){
+    for (int i=0; i<g->getNbLignes(); i++){
+        for (int j=0; j<g->getNbColonnes(); j++){
             //rajouter du code pour sauter la 1e ligne
             getline(fichier, contenu);
 
             if (contenu=="0"){
-                ->setEtatCellule(false);
+                etat;
             } else {
-                setEtatCellule(true);
+                !etat;
             }
-            setEtatPrecedent(false);
-            celluleActive *c1 = new celluleActive(getEtatCellule(), getEtatPrecedent());
-            Stock[i][j]=c1;
-            Transition[i][j]=c1;
+            CelluleActive *c1 = new CelluleActive(etat);
+            g->Stock[i][j]=c1;
+            g->Transition[i][j]=c1;
         }
     }
 }
 
 void Fichier::creerFichier(){
     string nom_fichier= "<" + path + ">" + "_out_" + a;
-
 }

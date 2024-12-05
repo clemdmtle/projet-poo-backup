@@ -19,6 +19,17 @@ void Cellule::setEtatCellule(bool e)
 {
     etatCellule = e;
 }
+
+bool Cellule::getEtatPrecedent()
+{
+    return etatPrecedent;
+}
+
+void Cellule::setEtatPrecedent(bool etatP)
+{
+    etatPrecedent = etatP;
+}
+
 Cellule::~Cellule()
 {
 }
