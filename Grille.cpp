@@ -1,3 +1,4 @@
+#pragma once
 #include "Grille.h"
 
 void Grille::setStock(int ligne, int colonne, int etatCellule, int etatPrecedent){

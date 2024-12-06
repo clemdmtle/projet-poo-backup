@@ -15,7 +15,7 @@ string contenu = "";
 void Fichier::stockerDonnees(){
     ofstream fichier;
 
-    //sinon on ouvre en écriture à la suite
+    //on ouvre en écriture à la suite
     fichier.open(path.c_str(), ios::out | ios::app);
 
     if (fichier) {
@@ -37,7 +37,7 @@ void Fichier::lireFichier(){
                 cout << contenu;
             }
             cout << endl;
-            g->setNbLignes(stoi(contenu));
+            int nbLignes=stoi(contenu);
             contenu="";
 
             while (getline(fichier, strChiffre, ' ')){ //lit le contenu
@@ -45,7 +45,7 @@ void Fichier::lireFichier(){
                 cout << contenu;
             }
             cout << endl;
-            g->setNbColonnes(stoi(contenu));
+            int nbColonnes=stoi(contenu);
             contenu="";
 
             fichier.close(); //ferme le fichier
@@ -57,7 +57,7 @@ void Fichier::lireFichier(){
 auto Fichier::initGrille(){
     int nb, duree;
 
-    Grille *g = new Grille (g->getNbColonnes(), g->getNbLignes());
+    Grille *g = new Grille (nbLignes, nbColonnes);
     return g;
 }
 
@@ -77,7 +77,7 @@ void Fichier::initCellule(){
             }
             CelluleActive *c1 = new CelluleActive(etat);
             g->setStock(i,j)=c1;
-            g->setTransition[i][j]=c1;
+            g->setTransition(i,j)=c1;
         }
     }
 }

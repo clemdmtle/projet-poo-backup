@@ -1,3 +1,4 @@
+#pragma once
 #ifndef CELLULE_H
 #define CELLULE_H
 
@@ -17,4 +18,4 @@ public:
   virtual ~Cellule();
 };
 
-#endif CELLULE_H
+#endif //CELLULE_H
