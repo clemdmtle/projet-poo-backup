@@ -7,9 +7,9 @@ class Fichier {
     public:
     Fichier(string path){}
 
-    void stockerDonnees();
+    void stockerDonnees(vector <Cellule*> vect);
     void creerFichier();
     void lireFichier();
-    auto initGrille();
+    auto initGrille(int nbLignes, int nbColonnes);
     void initCellule();
 };

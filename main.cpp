@@ -36,7 +36,11 @@ int main(){
         cout << "Quel état pour la cellule obstacle " + to_string(i) + "?" << endl;
         cin >> etatCellObs;
 
-        Cellule *c2=new CelluleObstacle(etatCellObs)
+        Cellule *c2=new CelluleObstacle(etatCellObs);
+
+        delete g->Stock[numLigne][numColonne];
+
+        g->Stock[numLigne]
 
     }
 }
