@@ -1,5 +1,4 @@
-#ifndef INTERFACECONSOLE_H
-#define INTERFACECONSOLE_H
+#pragma once
 #include "Interface.h"
 
 class InterfaceConsole : public Interface
@@ -10,5 +9,3 @@ public:
     void initialisationGrille(Grille *g) override;
     void affichageGrille(Grille *g) override;
 };
-
-#endif // INTERFACECONSOLE_H

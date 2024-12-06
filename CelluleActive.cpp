@@ -14,8 +14,3 @@ void CelluleActive::setEtatPrecedent(bool ep)
 {
   etatPrecedent = ep;
 }
-
-bool CelluleActive::changementEtat()
-{
-  etatCellule = !etatCellule;
-}

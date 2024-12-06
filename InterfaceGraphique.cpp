@@ -1,5 +1,7 @@
 #include "InterfaceGraphique.h"
 #include <SFML/Graphics.hpp>
+#include <ctime>
+#include <cstdlib>
 using namespace sf;
 
 InterfaceGraphique::InterfaceGraphique()
@@ -19,7 +21,7 @@ void InterfaceGraphique::initialisationGrille(Grille *g)
 void InterfaceGraphique::affichageGrille(Grille *g)
 {
   // recuperer le stock via le getter
-  const vector<vector<Cellule*>>& grilleAffichee = g->getStock();
+  const vector<vector<Cellule *>> &grilleAffichee = g->getStock();
   srand(time(0));
 
   RenderWindow fenetre(VideoMode(g->getNbLignes() * tailleCellule, g->getNbColonnes() * tailleCellule), "Jeu de la Vie");
@@ -39,4 +41,3 @@ void InterfaceGraphique::affichageGrille(Grille *g)
   }
   fenetre.display();
 }
-

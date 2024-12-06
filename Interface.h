@@ -1,17 +1,11 @@
 #pragma once
-#ifndef INTERFACE_H
-#define INTERFACE_H
+#include "Grille.h"
 
 class Interface
 {
-private:
-    int cellSize, gridHeight, gridWidth;
-
 public:
     Interface();
-    Interface(int cS, int gH, int gW);
-    void initializeGrid();
-    void renderGrid();
+    virtual void initialisationGrille(Grille *g);
+    virtual void affichageGrille(Grille *g);
+    ~Interface();
 };
-
-#endif INTERFACE_H

@@ -1,11 +1,14 @@
 #pragma once
-#include <string> 
+#include <string>
+using namespace std;
 
-class Fichier {
+class Fichier
+{
+private:
     string path;
 
-    public:
-    Fichier(string path){}
+public:
+    Fichier(string path) {}
 
     void stockerDonnees();
     void creerFichier();

@@ -1,4 +1,3 @@
-#pragma once
 #include "Cellule.h"
 
 Cellule::Cellule()

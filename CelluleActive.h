@@ -1,5 +1,4 @@
-#ifndef CELLULEACTIVE_H
-#define CELLULEACTIVE_H
+#pragma once
 #include "Cellule.h"
 
 class CelluleActive : public Cellule
@@ -11,7 +10,4 @@ public:
   CelluleActive(bool etatCellule);
   bool getEtatPrecedent();
   void setEtatPrecedent(bool e);
-  bool changementEtat() override;
 };
-
-#endif CELLULEACTIVE_H

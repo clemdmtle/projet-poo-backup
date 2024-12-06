@@ -1,27 +1,27 @@
 #pragma once
 #include <string>
 #include <iostream>
-#include <vector>;
-#include "Fichier.cpp"
+#include <vector>
+#include "Fichier.h"
+#include "Cellule.h"
+
 using namespace std;
 
-
-
-
-class Grille {
-    private:
+class Grille
+{
+private:
     int nbColonnes, nbLignes;
-    vector<vector <Cellule*>> Stock;
-    vector<vector <Cellule*>> Transition;
-    
+    vector<vector<Cellule *>> Stock;
+    vector<vector<Cellule *>> Transition;
 
-    public:
-    Grille(int nbColonnes, int nbLignes){
-        this->nbColonnes=nbColonnes;
-        this->nbLignes=nbLignes;
-        Stock=vector<vector <Cellule*>>(nbLignes, vector <Cellule*>(nbColonnes, nullptr));
-        Transition=vector<vector <Cellule*>>(nbLignes, vector <Cellule*>(nbColonnes, nullptr));
-
+public:
+    Grille();
+    Grille(int nbColonnes, int nbLignes)
+    {
+        this->nbColonnes = nbColonnes;
+        this->nbLignes = nbLignes;
+        Stock = vector<vector<Cellule *>>(nbLignes, vector<Cellule *>(nbColonnes, nullptr));
+        Transition = vector<vector<Cellule *>>(nbLignes, vector<Cellule *>(nbColonnes, nullptr));
     }
 
     void setStock(int ligne, int colonne, int etatCellule, int etatPrecedent);
@@ -30,8 +30,9 @@ class Grille {
     int getNbColonnes();
     void setNbLignes(int nb);
     void setNbColonnes(int nb);
-    Cellule* getStock(int ligne, int colonne);
-    Cellule* getTransition(int ligne, int colonne);
+    vector<vector<Cellule *>> getStock();
+    Cellule *getCelluleStock(int ligne, int colonne);
+    Cellule *getCelluleTransition(int ligne, int colonne);
     bool etatCellule(int l, int c);
     bool etatPrecedent(int l, int c);
 };
