@@ -6,3 +6,6 @@ class CelluleObstacle : public Cellule
 public:
   CelluleObstacle(bool ec);
 };
+
+
+

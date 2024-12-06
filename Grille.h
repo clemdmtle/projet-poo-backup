@@ -24,8 +24,8 @@ public:
         Transition = vector<vector<Cellule *>>(nbLignes, vector<Cellule *>(nbColonnes, nullptr));
     }
 
-    void setStock(int ligne, int colonne, int etatCellule, int etatPrecedent);
-    void setTransition(int ligne, int colonne, int etatCellule, int etatPrecedent);
+    void setStock(int ligne, int colonne, Cellule* c1);
+    void setTransition(int ligne, int colonne, Cellule* c1);
     int getNbLignes();
     int getNbColonnes();
     void setNbLignes(int nb);

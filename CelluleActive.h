@@ -8,6 +8,4 @@ private:
 
 public:
   CelluleActive(bool etatCellule);
-  bool getEtatPrecedent();
-  void setEtatPrecedent(bool e);
 };
