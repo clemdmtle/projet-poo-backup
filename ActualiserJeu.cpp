@@ -5,35 +5,47 @@
 #include "Grille.cpp"
 #include "Fichier.cpp"
 
-
-int count=0;
-
-void ActualiserJeu::changementEtat(int l, int c, Grille *g){
-    if ((g->getStock(l,c)->getEtatCellule())==true){
-        if (count>=2 && count<=3){
-            g->getTransition(l,c)->setEtatCellule(true);
-        }else{
-            g->getTransition(l,c)->setEtatCellule(false);
+void ActualiserJeu::changementEtat(int l, int c, Grille *g)
+{
+    int count = verifierVoisins(l, c, g);
+    if ((g->getCelluleStock(l, c)->getEtatCellule()) == true)
+    {
+        if (count >= 2 && count <= 3)
+        {
+            g->getCelluleTransition(l, c)->setEtatCellule(true);
         }
-    }else{
-        if (count==3){
-            g->getTransition(l,c)->setEtatCellule(true);
+        else
+        {
+            g->getCelluleTransition(l, c)->setEtatCellule(false);
+        }
+    }
+    else
+    {
+        if (count == 3)
+        {
+            g->getCelluleTransition(l, c)->setEtatCellule(true);
         }
     }
 }
 
-int ActualiserJeu::verifierVoisins(int l, int c, Grille *g){
-    count=0;
-    g->getStock(l, c)->setEtatPrecedent(g->etatCellule(l,c));
+int ActualiserJeu::verifierVoisins(int l, int c, Grille *g)
+{
+    int count = 0;
+    g->getCelluleStock(l, c)->setEtatPrecedent(g->etatCellule(l, c));
 
- 
-    for (c=-1; c<=1; c++){
-        for (l=-1; l<=1; l++){
-            if (c==0 && l==0){
+    for (c = -1; c <= 1; c++)
+    {
+        for (l = -1; l <= 1; l++)
+        {
+            if (c == 0 && l == 0)
+            {
                 continue;
-            }else{
-                if (g->etatCellule(l,c)==true){
-                count++;
+            }
+            else
+            {
+                if (g->etatCellule(l, c) == true)
+                {
+                    count++;
                 }
             }
         }
@@ -42,29 +54,39 @@ int ActualiserJeu::verifierVoisins(int l, int c, Grille *g){
     return count;
 }
 
-void ActualiserJeu::actualiserGrille(Grille *g){
+void ActualiserJeu::actualiserGrille(Grille *g)
+{
 
-    for (int l=0; l<g->getNbLignes(); l++){
-        for (int c=0; c<g->getNbColonnes(); c++){
+    for (int l = 0; l < g->getNbLignes(); l++)
+    {
+        for (int c = 0; c < g->getNbColonnes(); c++)
+        {
             verifierVoisins(l, c, g);
         }
     }
     verifierEtatJeu(g);
 }
 
-bool ActualiserJeu::verifierEtatJeu(Grille *g){
-    bool etatJeu=false;
+bool ActualiserJeu::verifierEtatJeu(Grille *g)
+{
+    bool etatJeu = false;
 
-    for (int i=0; i<g->getNbLignes(); i++){
-        for (int j=0; j<g->getNbColonnes(); j++){
-            if (g->etatCellule(i,j)!=g->etatPrecedent(i,j)){
-                etatJeu=true;
+    for (int i = 0; i < g->getNbLignes(); i++)
+    {
+        for (int j = 0; j < g->getNbColonnes(); j++)
+        {
+            if (g->etatCellule(i, j) != g->etatPrecedent(i, j))
+            {
+                etatJeu = true;
             }
         }
     }
-    if (etatJeu==false){
+    if (etatJeu == false)
+    {
         cout << "Le jeu est fini" << endl;
-    } else {
+    }
+    else
+    {
         cout << "Le jeu peut continuer" << endl;
     }
     return etatJeu;
