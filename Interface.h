@@ -1,6 +1,6 @@
 #pragma once
 #include "Fichier.h"
-#include "Grille.h"
+#include "Grille.cpp"
 
 class Interface
 {
