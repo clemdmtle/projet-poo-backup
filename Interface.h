@@ -6,6 +6,6 @@ class Interface
 {
 public:
     Interface();
-    virtual void affichageGrille(Grille *g, Fichier* f)=0;
+    virtual void affichageGrille(Grille *g, Fichier* f);
     ~Interface();
 };
