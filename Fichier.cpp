@@ -47,6 +47,7 @@ void Fichier::stockerDonnees(vector<vector<Cellule*>> vect){
             }
         }
         fichierSortie.close(); //on ferme le fichier
+        a++;
     }else {
         cerr << "Erreur à l'ouverture du fichier en écriture" << endl;
     }

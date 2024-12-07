@@ -3,9 +3,6 @@
 
 class CelluleActive : public Cellule
 {
-private:
-  bool etatPrecedent;
-
 public:
   CelluleActive(bool etatCellule);
 };

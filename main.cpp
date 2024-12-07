@@ -8,21 +8,52 @@
 #include "InterfaceConsole.h"
 #include "InterfaceGraphique.h"
 #include "JeuDeLaVie.h"
+#include <fstream>
 
 using namespace std;
 
-int nb, duree;
-int cellObs;
-int numLigne, numColonne, etatCellObs;
 
-int main()
-{
+int main(){
+    string path, contenu, aIgnorer;
+    int nb, duree;
+    int cellObs;
+    int numLigne, numColonne, etatCellObs;
+    bool etat=false;
+
+    cout << "Veuillez donner le chemin du fichier contenant vos cellules" << endl;
+    cin >> path; //récupère le fichier
+    Fichier *f=new Fichier(path); //créer un obj fichier
+    int* p=f->lireFichier(); //récupère le tableau avec nblignes et nbcolonnes
+
+    int nbLignes=p[0]; //récupère nblignes
+    int nbColonnes=p[1]; //récupère nbcolonnes
+
+    Grille* g=new Grille(nbLignes, nbColonnes); //créer un obj grille
+
+    
+
+    ifstream fichier(path.c_str(), ios::in); //ouvre le fichier
+    getline(fichier, aIgnorer); //on saute la 1e ligne qui contient nblignes nbcolonnes
+    for (int i=0; i<nbLignes; i++){
+        for (int j=0; j<nbColonnes; j++){ //parcourt la grille
+            getline(fichier, contenu, ' '); //lit chaque caractère
+            if (contenu=="0"){ //associe un état 
+                etat=etat;
+            } else {
+                etat=!etat;
+            }
+            CelluleActive *c1 = new CelluleActive(etat); //créer un obj cellule
+            g->setStock(i,j, c1);
+            g->setTransition(i,j, c1);
+        }
+    }
+
     cout << "Combien d'itérations voulez-vous que le programme effectuer avant de s'arrêter?" << endl;
     cin >> nb;
     cout << "Quelle durée entre deux itérations voulez-vous instaurer (en secondes)?" << endl;
     cin >> duree;
 
-    JeuDeLaVie *jdlv = new JeuDeLaVie(nb, duree);
+    JeuDeLaVie *jdlv = new JeuDeLaVie(nb, duree); //créer une partie
 
     cout << "Combien de cellule obstacle voulez-vous rajouter?" << endl;
     cin >> cellObs;
@@ -36,14 +67,12 @@ int main()
         cout << "Quel état pour la cellule obstacle " + to_string(i) + "?" << endl;
         cin >> etatCellObs;
 
-        Cellule *c2 = new CelluleObstacle(etatCellObs);
+        Cellule *c2 = new CelluleObstacle(etatCellObs); //change le type de la cellule en cellule obstacle
     }
 
     // Interface
     int choixInterface;
-    cout << "Choississez votre type d'interface: " << endl
-         << "(1)->Interface console" << endl
-         << "(2)->Interface graphique" << endl;
+    cout << "Choississez votre type d'interface: " << endl << "(1)->Interface console" << endl << "(2)->Interface graphique" << endl;
     cin >> choixInterface;
     if (choixInterface == 1)
     {
