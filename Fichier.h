@@ -1,6 +1,7 @@
 #pragma once
 #include <string> 
 #include "Cellule.h"
+#include <vector>
 using namespace std;
 
 class Fichier {

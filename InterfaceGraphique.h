@@ -1,6 +1,8 @@
 #ifndef INTERFACEGRAPHIQUE_H
 #define INTERFACEGRAPHIQUE_H
 #include "Interface.h"
+#include "Grille.h"
+#include "Fichier.h"
 
 
 class InterfaceGraphique : public Interface
