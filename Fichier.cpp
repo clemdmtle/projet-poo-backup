@@ -11,6 +11,10 @@ using namespace std;
 
 int a = 0;
 string contenu = "";
+Fichier::Fichier(string path)
+{
+    this->path = path;
+}
 
 vector<int> Fichier::lireFichier()
 { // permet d'extraire nbcolonnes et nblignes

@@ -2,6 +2,22 @@
 #include <algorithm>
 #include "Interface.cpp"
 
+Grille::Grille()
+{
+    nbColonnes = 40;
+    nbLignes = 40;
+    Stock = vector<vector<Cellule *>>(nbLignes, vector<Cellule *>(nbColonnes, nullptr));
+    Transition = vector<vector<Cellule *>>(nbLignes, vector<Cellule *>(nbColonnes, nullptr));
+}
+
+Grille::Grille(int nbColonnes, int nbLignes)
+{
+    this->nbColonnes = nbColonnes;
+    this->nbLignes = nbLignes;
+    Stock = vector<vector<Cellule *>>(nbLignes, vector<Cellule *>(nbColonnes, nullptr));
+    Transition = vector<vector<Cellule *>>(nbLignes, vector<Cellule *>(nbColonnes, nullptr));
+}
+
 void Grille::setStock(int ligne, int colonne, Cellule *c)
 { // permet de changer la cellule dans le vecteur stock
     Stock[ligne][colonne] = c;

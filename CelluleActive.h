@@ -5,6 +5,5 @@ class CelluleActive : public Cellule
 {
 public:
   CelluleActive(bool etatCellule);
-
   string getType();
 };

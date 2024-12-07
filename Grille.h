@@ -17,14 +17,7 @@ private:
 
 public:
     Grille();
-    Grille(int nbColonnes, int nbLignes)
-    {
-        this->nbColonnes = nbColonnes;
-        this->nbLignes = nbLignes;
-        Stock = vector<vector<Cellule *>>(nbLignes, vector<Cellule *>(nbColonnes, nullptr));
-        Transition = vector<vector<Cellule *>>(nbLignes, vector<Cellule *>(nbColonnes, nullptr));
-    }
-
+    Grille(int nbColonnes, int nbLignes);
     void setStock(int ligne, int colonne, Cellule *c1);
     void setTransition(int ligne, int colonne, Cellule *c1);
     int getNbLignes();
