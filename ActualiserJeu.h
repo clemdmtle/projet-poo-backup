@@ -1,5 +1,7 @@
 #pragma once
 #include "Fichier.h"
+#include "Grille.h"
+#include "JeuDeLaVie.h"
 
 class ActualiserJeu {
     public:

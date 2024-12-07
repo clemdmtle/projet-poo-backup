@@ -1,5 +1,6 @@
 #pragma once
 #include <string> 
+#include "Cellule.h"
 using namespace std;
 
 class Fichier {
