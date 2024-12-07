@@ -3,10 +3,9 @@
 #include <fstream>
 #include <string>
 #include <iostream>
-#include "Cellule.cpp"
+#include "Cellule.h"
 #include "Grille.h"
-#include "Grille.cpp"
-#include "CelluleActive.cpp"
+#include "CelluleActive.h"
 using namespace std;
 
 int a = 0;

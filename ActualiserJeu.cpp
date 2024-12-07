@@ -1,9 +1,9 @@
 #include "ActualiserJeu.h"
-#include "Cellule.cpp"
-#include "CelluleActive.cpp"
-#include "Grille.cpp"
+#include "Cellule.h"
+#include "CelluleActive.h"
+#include "Grille.h"
 #include "Fichier.h"
-#include "JeuDeLaVie.cpp"
+#include "JeuDeLaVie.h"
 
 int b=0;
 

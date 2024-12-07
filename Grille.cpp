@@ -1,6 +1,6 @@
 #include "Grille.h"
 #include <algorithm>
-#include "Interface.cpp"
+#include "Interface.h"
 
 Grille::Grille()
 {
