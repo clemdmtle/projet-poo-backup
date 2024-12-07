@@ -6,8 +6,6 @@
 #include "Cellule.h"
 #include "Interface.h"
 
-using namespace std;
-
 class Grille
 {
 private:
