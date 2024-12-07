@@ -14,7 +14,6 @@ InterfaceGraphique::InterfaceGraphique(int tC)
 {
 }
 
-
 void InterfaceGraphique::affichageGrille(Grille *g, Fichier *f)
 {
   // recuperer le stock via le getter

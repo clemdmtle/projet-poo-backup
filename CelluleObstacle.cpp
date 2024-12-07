@@ -6,6 +6,7 @@ CelluleObstacle::CelluleObstacle(bool ec)
   etatPrecedent = false;
 }
 
-string CelluleObstacle::getType(){
+string CelluleObstacle::getType()
+{
   return "Obstacle";
 }

@@ -6,6 +6,7 @@ CelluleActive::CelluleActive(bool ec)
   this->etatPrecedent = 0;
 }
 
-string CelluleActive::getType(){
+string CelluleActive::getType()
+{
   return "Active";
 }

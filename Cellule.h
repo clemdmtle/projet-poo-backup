@@ -1,6 +1,6 @@
 #ifndef CELLULE_H
 #define CELLULE_H
-#include <string> 
+#include <string>
 #include <iostream>
 using namespace std;
 
@@ -21,4 +21,4 @@ public:
   virtual ~Cellule();
 };
 
-#endif //CELLULE_H
+#endif // CELLULE_H

@@ -8,5 +8,5 @@ class InterfaceConsole : public Interface
 private:
 public:
     InterfaceConsole();
-    void affichageGrille(Grille *g, Fichier* f) override;
+    void affichageGrille(Grille *g, Fichier *f) override;
 };

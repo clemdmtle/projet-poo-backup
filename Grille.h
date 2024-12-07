@@ -13,7 +13,7 @@ private:
     int nbColonnes, nbLignes;
     vector<vector<Cellule *>> Stock;
     vector<vector<Cellule *>> Transition;
-    vector<Interface*> observers;
+    vector<Interface *> observers;
 
 public:
     Grille();
@@ -25,8 +25,8 @@ public:
         Transition = vector<vector<Cellule *>>(nbLignes, vector<Cellule *>(nbColonnes, nullptr));
     }
 
-    void setStock(int ligne, int colonne, Cellule* c1);
-    void setTransition(int ligne, int colonne, Cellule* c1);
+    void setStock(int ligne, int colonne, Cellule *c1);
+    void setTransition(int ligne, int colonne, Cellule *c1);
     int getNbLignes();
     int getNbColonnes();
     void setNbLignes(int nb);
@@ -36,7 +36,7 @@ public:
     Cellule *getCelluleTransition(int ligne, int colonne);
     bool etatCellule(int l, int c);
     bool etatPrecedent(int l, int c);
-    void addObservers(Interface* inter);
-    void removeObservers(Interface* inter);
+    void addObservers(Interface *inter);
+    void removeObservers(Interface *inter);
     void notify(Fichier *f);
 };
