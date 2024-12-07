@@ -7,6 +7,3 @@ public:
   CelluleObstacle(bool ec);
   string getType();
 };
-
-
-
