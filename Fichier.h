@@ -12,5 +12,5 @@ class Fichier {
 
     void stockerDonnees(vector<vector<Cellule*>> vect);
     string to_char(Cellule* c2);
-    int* lireFichier();
+    vector<int> lireFichier();
 };

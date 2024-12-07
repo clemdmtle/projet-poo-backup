@@ -12,8 +12,8 @@ using namespace std;
 int a=0; 
 string contenu = "";
 
-int* Fichier::lireFichier(){ //permet d'extraire nbcolonnes et nblignes
-    int tab[2];
+vector<int> Fichier::lireFichier(){ //permet d'extraire nbcolonnes et nblignes
+    vector<int> tab;
     ifstream fichier(path.c_str(), ios::in); //ouvre le fichier
         string strChiffre;
 

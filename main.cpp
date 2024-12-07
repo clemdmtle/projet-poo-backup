@@ -10,6 +10,7 @@
 #include <fstream>
 #include <thread>
 #include <chrono>
+#include <vector>
 
 using namespace std;
 using namespace chrono;
@@ -26,7 +27,7 @@ int main(){
     cout << "Veuillez donner le chemin du fichier contenant vos cellules" << endl;
     cin >> path; //récupère le fichier
     Fichier *f=new Fichier(path); //créer un obj fichier
-    int* p=f->lireFichier(); //récupère le tableau avec nblignes et nbcolonnes
+    vector<int> p=f->lireFichier(); //récupère le tableau avec nblignes et nbcolonnes
 
     int nbLignes=p[0]; //récupère nblignes
     int nbColonnes=p[1]; //récupère nbcolonnes
