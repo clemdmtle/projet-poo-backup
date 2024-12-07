@@ -1,5 +1,6 @@
 #include "Grille.h"
 #include <algorithm>
+#include "Interface.cpp"
 
 void Grille::setStock(int ligne, int colonne, Cellule *c){ //permet de changer la cellule dans le vecteur stock
     Stock[ligne][colonne] = c;
