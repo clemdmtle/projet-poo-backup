@@ -1,6 +1,8 @@
-#pragma once
 #ifndef CELLULE_H
 #define CELLULE_H
+#include <string> 
+#include <iostream>
+using namespace std;
 
 class Cellule
 {
@@ -15,6 +17,7 @@ public:
   virtual void setEtatCellule(bool e);
   virtual bool getEtatPrecedent();
   virtual void setEtatPrecedent(bool etatP);
+  virtual string getType();
   virtual ~Cellule();
 };
 

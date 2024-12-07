@@ -1,5 +1,6 @@
 #pragma once
 class JeuDeLaVie {
+    private:
     int nbIteration, dureeIteration;
     int count;
 
@@ -8,4 +9,9 @@ class JeuDeLaVie {
         this->nbIteration=nbIteration;
         this->dureeIteration=dureeIteration;
     }
+
+    int getNbIteration();
+    void setNbIteration(int nb);
+    int getDureeIteration();
+    void setDureeIteration(int nb);
 };

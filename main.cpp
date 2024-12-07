@@ -55,7 +55,7 @@ int main(){
 
     JeuDeLaVie *jdlv = new JeuDeLaVie(nb, duree); //créer une partie
 
-    cout << "Combien de cellule obstacle voulez-vous rajouter?" << endl;
+    cout << "Combien de cellule obstacle voulez-vous rajouter?" << endl; //demande les cellules obstacles
     cin >> cellObs;
 
     for (int i = 0; i < cellObs; i++)
@@ -72,7 +72,7 @@ int main(){
 
     // Interface
     int choixInterface;
-    cout << "Choississez votre type d'interface: " << endl << "(1)->Interface console" << endl << "(2)->Interface graphique" << endl;
+    cout << "Choississez votre type d'interface: " << endl << "(1)->Interface console" << endl << "(2)->Interface graphique" << endl; //l'utilisateur choisit le mode de fonctionnement
     cin >> choixInterface;
     if (choixInterface == 1)
     {
@@ -91,5 +91,10 @@ int main(){
     else
     {
         cerr << "ERROR : nombre invalide " << endl;
+    }
+
+    ActualiserJeu *actu = new ActualiserJeu;
+    while (actu->verifierEtatJeu(g, jdlv)==true){ //relance le jeu tant qu'il n'est pas fini
+        actu->actualiserGrille(g, jdlv);
     }
 }

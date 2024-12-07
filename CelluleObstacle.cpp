@@ -3,5 +3,9 @@
 CelluleObstacle::CelluleObstacle(bool ec)
 {
   this->etatCellule = ec;
-  etatPrecedent = 2;
+  etatPrecedent = false;
+}
+
+string CelluleObstacle::getType(){
+  return "Obstacle";
 }

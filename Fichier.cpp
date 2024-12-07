@@ -12,16 +12,16 @@ using namespace std;
 int a=0; 
 string contenu = "";
 
-int* Fichier::lireFichier(){
+int* Fichier::lireFichier(){ //permet d'extraire nbcolonnes et nblignes
     int tab[2];
     ifstream fichier(path.c_str(), ios::in); //ouvre le fichier
         string strChiffre;
 
     if(fichier){
         cout << "Fichier ouvert avec succès" << endl;
-        for (int x=0; x<2; x++){
+        for (int x=0; x<2; x++){ //stocke dans un tableau nbligne et nbcolonne
             getline(fichier, strChiffre, ' ');
-            tab[x]=stoi(strChiffre);
+            tab[x]=stoi(strChiffre); //change le string en int
         } 
 
         fichier.close(); //ferme le fichier
@@ -33,17 +33,16 @@ int* Fichier::lireFichier(){
 }
 
 
-void Fichier::stockerDonnees(vector<vector<Cellule*>> vect){
+void Fichier::stockerDonnees(vector<vector<Cellule*>> vect){ //permet de stocker une grille dans un fichier
     ofstream fichierSortie;
 
     string nom_fichier= "<" + path + ">" + "_out_" + to_string(a); //on pose le nom du fichier
-    //on ouvre en écriture
-    fichierSortie.open(nom_fichier.c_str(), ios::out);
+    fichierSortie.open(nom_fichier.c_str(), ios::out); //on ouvre en écriture
 
     if (fichierSortie) {
         for (auto ligne: vect){
             for (auto cell: ligne){
-                fichierSortie << to_char(cell);
+                fichierSortie << to_char(cell); //parcourt chaque cellule et appelle to_char
             }
         }
         fichierSortie.close(); //on ferme le fichier
@@ -53,7 +52,7 @@ void Fichier::stockerDonnees(vector<vector<Cellule*>> vect){
     }
 }
 
-string Fichier::to_char(Cellule* c2){
+string Fichier::to_char(Cellule* c2){ //pour changer un bool en string (pour l'état d'une cellule)
     string str;
     if (c2->getEtatCellule()==true){
         str="1";

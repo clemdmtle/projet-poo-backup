@@ -30,6 +30,10 @@ void Cellule::setEtatPrecedent(bool etatP)
     etatPrecedent = etatP;
 }
 
+string Cellule::getType(){
+    return "Cellule";
+}
+
 Cellule::~Cellule()
 {
 }
