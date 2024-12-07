@@ -2,7 +2,9 @@
 #include <iostream>
 using namespace std;
 
-void affichageGrille(Grille *g, Fichier *f)
+Interface::Interface(){}
+
+void Interface::affichageGrille(Grille *g, Fichier *f)
 {
     cout << "Affichage de la grille" << endl;
 }
