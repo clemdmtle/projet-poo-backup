@@ -5,6 +5,7 @@
 #include "Fichier.h"
 #include "Cellule.h"
 #include "Interface.h"
+class Interface;
 
 class Grille
 {
