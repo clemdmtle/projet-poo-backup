@@ -9,8 +9,12 @@
 #include "InterfaceGraphique.h"
 #include "JeuDeLaVie.h"
 #include <fstream>
+#include <thread>
+#include <chrono>
 
 using namespace std;
+using namespace chrono;
+using namespace this_thread;
 
 
 int main(){
@@ -74,27 +78,23 @@ int main(){
     int choixInterface;
     cout << "Choississez votre type d'interface: " << endl << "(1)->Interface console" << endl << "(2)->Interface graphique" << endl; //l'utilisateur choisit le mode de fonctionnement
     cin >> choixInterface;
-    if (choixInterface == 1)
-    {
-        InterfaceConsole ic;
-        ic.affichageGrille(g);
-    }
-    else if (choixInterface == 2)
-    {
+    if (choixInterface == 1){
+        InterfaceConsole *ic=new InterfaceConsole;
+        g->addObservers(ic);
+    }else if (choixInterface == 2){
         int choixtC;
         cout << "Rentrez la taille que vous souhaitez pour vos cellule:" << endl;
         cin >> choixtC;
 
-        InterfaceGraphique ig(choixtC);
-        ig.affichageGrille(g);
-    }
-    else
-    {
+        InterfaceGraphique *ig=new InterfaceGraphique(choixtC);
+        g->addObservers(ig);
+    }else{
         cerr << "ERROR : nombre invalide " << endl;
     }
 
     ActualiserJeu *actu = new ActualiserJeu;
     while (actu->verifierEtatJeu(g, jdlv)==true){ //relance le jeu tant qu'il n'est pas fini
-        actu->actualiserGrille(g, jdlv);
+        actu->actualiserGrille(g, jdlv, f);
+        sleep_for(seconds(jdlv->getDureeIteration()));
     }
 }

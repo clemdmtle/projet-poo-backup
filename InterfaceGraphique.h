@@ -11,8 +11,7 @@ private:
 public:
   InterfaceGraphique();
   InterfaceGraphique(int tC);
-  void initialisationGrille(Grille *g) override;
-  void affichageGrille(Grille *g) override;
+  void affichageGrille(Grille *g, Fichier* f) override;
 };
 
 #endif // INTERFACEGRAPHIQUE_H

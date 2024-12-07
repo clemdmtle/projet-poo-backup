@@ -5,7 +5,6 @@ class Interface
 {
 public:
     Interface();
-    virtual void initialisationGrille(Grille *g);
-    virtual void affichageGrille(Grille *g);
+    virtual void affichageGrille(Grille *g, Fichier* f)=0;
     ~Interface();
 };

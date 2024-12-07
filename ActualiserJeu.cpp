@@ -3,7 +3,7 @@
 #include "Cellule.cpp"
 #include "CelluleActive.cpp"
 #include "Grille.cpp"
-#include "Fichier.cpp"
+#include "Fichier.h"
 #include "JeuDeLaVie.cpp"
 
 int b=0;
@@ -42,7 +42,7 @@ int ActualiserJeu::verifierVoisins(int l, int c, Grille *g){
     return count;
 }
 
-void ActualiserJeu::actualiserGrille(Grille *g, JeuDeLaVie* jdlv){
+void ActualiserJeu::actualiserGrille(Grille *g, JeuDeLaVie* jdlv, Fichier* f){
     for (int l = 0; l < g->getNbLignes(); l++){
         for (int c = 0; c < g->getNbColonnes(); c++){ //on parcourt chaque cellule
             verifierVoisins(l, c, g); //on vérifie ses voisins
@@ -55,6 +55,7 @@ void ActualiserJeu::actualiserGrille(Grille *g, JeuDeLaVie* jdlv){
             g->setStock(i,j,(g->getCelluleTransition(i,j)));
         }
     }
+    g->notify(f);
     verifierEtatJeu(g, jdlv); //on regarde si le jeu est fini ou non
 }
 

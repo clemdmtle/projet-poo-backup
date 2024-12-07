@@ -14,11 +14,8 @@ InterfaceGraphique::InterfaceGraphique(int tC)
 {
 }
 
-void InterfaceGraphique::initialisationGrille(Grille *g)
-{
-}
 
-void InterfaceGraphique::affichageGrille(Grille *g)
+void InterfaceGraphique::affichageGrille(Grille *g, Fichier *f)
 {
   // recuperer le stock via le getter
   const vector<vector<Cellule *>> &grilleAffichee = g->getStock();

@@ -4,6 +4,7 @@
 #include <vector>
 #include "Fichier.h"
 #include "Cellule.h"
+#include "Interface.h"
 
 using namespace std;
 
@@ -13,6 +14,7 @@ private:
     int nbColonnes, nbLignes;
     vector<vector<Cellule *>> Stock;
     vector<vector<Cellule *>> Transition;
+    vector<Interface*> observers;
 
 public:
     Grille();
@@ -35,4 +37,7 @@ public:
     Cellule *getCelluleTransition(int ligne, int colonne);
     bool etatCellule(int l, int c);
     bool etatPrecedent(int l, int c);
+    void addObservers(Interface* inter);
+    void removeObservers(Interface* inter);
+    void notify(Fichier *f);
 };

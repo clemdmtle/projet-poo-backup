@@ -1,4 +1,5 @@
 #include "Grille.h"
+#include <algorithm>
 
 void Grille::setStock(int ligne, int colonne, Cellule *c){ //permet de changer la cellule dans le vecteur stock
     Stock[ligne][colonne] = c;
@@ -48,4 +49,17 @@ bool Grille::etatPrecedent(int l, int c){ //donne l'étatP d'une cellule à un i
     c = (c + nbColonnes) % nbColonnes;
     bool etat = Stock[l][c]->getEtatPrecedent();
     return etat;
+}
+
+void Grille::addObservers(Interface* inter){
+    observers.push_back(inter);
+}
+
+void Grille::removeObservers(Interface* inter){
+    observers.erase(remove(observers.begin(), observers.end(), inter), observers.end());
+}
+void Grille::notify(Fichier* f){
+    for (Interface* inter : observers){
+        inter->affichageGrille(this, f);
+    }
 }
