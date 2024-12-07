@@ -1,5 +1,4 @@
-#ifndef CELLULE_H
-#define CELLULE_H
+#pragma once
 #include <string>
 #include <iostream>
 using namespace std;
@@ -20,5 +19,3 @@ public:
   virtual string getType();
   virtual ~Cellule();
 };
-
-#endif // CELLULE_H
