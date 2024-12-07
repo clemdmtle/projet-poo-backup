@@ -1,4 +1,3 @@
-#pragma once
 #include <iostream>
 #include "ActualiserJeu.h"
 #include "CelluleActive.h"
