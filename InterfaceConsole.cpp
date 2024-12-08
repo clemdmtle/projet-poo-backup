@@ -4,12 +4,13 @@ InterfaceConsole::InterfaceConsole() {}
 
 void InterfaceConsole::affichageGrille(Grille *g, Fichier *f)
 {
-  for (auto ligne : g->getStock())
-  {
-    for (auto cell : ligne)
-    {
-      cout << cell; // parcourt chaque cellule et appelle to_char
+  cout << "Début de l'affichage" << endl;
+  for (int i = 0; i<g->getNbLignes(); i++){
+    for (int j=0; j<g->getNbColonnes(); j++){
+      cout << f->to_char(g->getCelluleStock(i,j)) << " ";
     }
+    cout << endl;
   }
   f->stockerDonnees(g->getStock());
+  cout << "Fin de l'affichage" << endl;
 }

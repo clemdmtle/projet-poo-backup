@@ -10,7 +10,7 @@ Grille::Grille()
     Transition = vector<vector<Cellule *>>(nbLignes, vector<Cellule *>(nbColonnes, nullptr));
 }
 
-Grille::Grille(int nbColonnes, int nbLignes)
+Grille::Grille(int nbLignes, int nbColonnes)
 {
     this->nbColonnes = nbColonnes;
     this->nbLignes = nbLignes;

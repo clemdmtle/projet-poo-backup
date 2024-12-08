@@ -17,7 +17,7 @@ private:
 
 public:
     Grille();
-    Grille(int nbColonnes, int nbLignes);
+    Grille(int nbLignes, int nbColonnes);
     void setStock(int ligne, int colonne, Cellule *c1);
     void setTransition(int ligne, int colonne, Cellule *c1);
     int getNbLignes();

@@ -53,8 +53,9 @@ void Fichier::stockerDonnees(vector<vector<Cellule *>> vect)
         {
             for (auto cell : ligne)
             {
-                fichierSortie << to_char(cell); // parcourt chaque cellule et appelle to_char
+                fichierSortie << to_char(cell) << " "; // parcourt chaque cellule et appelle to_char
             }
+            cout << endl;
         }
         fichierSortie.close(); // on ferme le fichier
         a++;

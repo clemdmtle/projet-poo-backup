@@ -31,6 +31,8 @@ int main()
 
     int nbLignes = p[0];   // récupère nblignes
     int nbColonnes = p[1]; // récupère nbcolonnes
+    cout << "nb lignes : " << nbLignes << endl;
+    cout << "nb colonnes : " << nbColonnes << endl;
 
     Grille *g = new Grille(nbLignes, nbColonnes); // créer un obj grille
 
@@ -80,9 +82,7 @@ int main()
 
     // Interface
     int choixInterface;
-    cout << "Choississez votre type d'interface: " << endl
-         << "(1)->Interface console" << endl
-         << "(2)->Interface graphique" << endl; // l'utilisateur choisit le mode de fonctionnement
+    cout << "Choississez votre type d'interface: " << endl << "(1)->Interface console" << endl << "(2)->Interface graphique" << endl; // l'utilisateur choisit le mode de fonctionnement
     cin >> choixInterface;
     if (choixInterface == 1)
     {
@@ -103,43 +103,21 @@ int main()
         cerr << "ERROR : nombre invalide " << endl;
     }
 
-    cout << "hey 1" << endl;
     ActualiserJeu *actu = new ActualiserJeu;
-    cout << "hey 2" << endl;
     while (actu->verifierEtatJeu(g, jdlv) == true)
     { // relance le jeu tant qu'il n'est pas fini
-        cout << "hey 6" << endl; 
         actu->actualiserGrille(g, jdlv, f);
-        cout << "hey 3" << endl;
         sleep_for(seconds(jdlv->getDureeIteration()));
-        cout << "hey 4" << endl;
     }
 
-    cout << "hey 5" << endl;
-    cout << "taille du tab" << g->getStock().size();
-
-    cout << "taille du tab" << g->getStock().size();
     for (int k = 0; k < g->getNbLignes(); k++){
         for (int l = 0; l < g->getNbColonnes(); l++){
             Cellule *stockCell = g->getCelluleStock(k, l);
             Cellule *transitionCell = g->getCelluleTransition(k, l);
-            
-            if (stockCell == transitionCell && stockCell != nullptr)
-            {
-                delete stockCell;
-                cout << "taille du tab" << g->getStock().size();
-            }
-            else
-            {
-                if (stockCell != nullptr) delete stockCell;
-                if (transitionCell != nullptr) delete transitionCell;
-                cout << "taille du tab" << g->getStock().size();
-            }
         }
     }   
     delete f;
     delete jdlv;
     delete g;
     delete actu;
-
 }
