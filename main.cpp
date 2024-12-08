@@ -114,10 +114,21 @@ int main()
     delete jdlv;
     delete g;
     delete actu;
-    for (int k=0; k<g->getNbLignes(); k++){
-        for (int l=0; l<g->getNbColonnes(); l++){
-            delete g->getCelluleStock(k, l);
-            delete g->getCelluleTransition(k, l);
+    for (int k = 0; k < g->getNbLignes(); k++){
+        for (int l = 0; l < g->getNbColonnes(); l++){
+            Cellule *stockCell = g->getCelluleStock(k, l);
+            Cellule *transitionCell = g->getCelluleTransition(k, l);
+            
+            if (stockCell == transitionCell && stockCell != nullptr)
+            {
+                delete stockCell;
+            }
+            else
+            {
+                if (stockCell != nullptr) delete stockCell;
+                if (transitionCell != nullptr) delete transitionCell;
+            }
         }
-    }
+    }   
+
 }
