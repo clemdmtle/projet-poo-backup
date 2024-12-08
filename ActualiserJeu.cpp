@@ -74,6 +74,5 @@ bool ActualiserJeu::verifierEtatJeu(Grille *g, JeuDeLaVie* jdlv){
         cout << "Le jeu est fini" << endl;
         etatJeu=false;
     }
-
     return etatJeu;
 }

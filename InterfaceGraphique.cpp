@@ -10,9 +10,7 @@ InterfaceGraphique::InterfaceGraphique()
 }
 
 InterfaceGraphique::InterfaceGraphique(int tC)
-    : tailleCellule(tC)
-{
-}
+    : tailleCellule(tC){}
 
 
 void InterfaceGraphique::affichageGrille(Grille* g, Fichier* f) {
@@ -44,3 +42,4 @@ void InterfaceGraphique::affichageGrille(Grille* g, Fichier* f) {
         window.display();  // Affiche le contenu de la fenêtre
     }
 }
+

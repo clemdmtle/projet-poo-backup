@@ -3,8 +3,7 @@
 #include "Grille.h"
 #include "Fichier.h"
 
-class InterfaceConsole : public Interface
-{
+class InterfaceConsole : public Interface{
 private:
 public:
     InterfaceConsole();

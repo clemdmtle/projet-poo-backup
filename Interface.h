@@ -5,8 +5,7 @@
 class Grille;
 class Fichier;
 
-class Interface
-{
+class Interface{
 public:
     Interface();
     virtual void affichageGrille(Grille *g, Fichier *f);

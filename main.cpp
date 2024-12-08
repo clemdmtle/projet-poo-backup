@@ -16,8 +16,7 @@ using namespace std;
 using namespace chrono;
 using namespace this_thread;
 
-int main()
-{
+int main(){
     string path, contenu, aIgnorer;
     int nb, duree;
     int cellObs;

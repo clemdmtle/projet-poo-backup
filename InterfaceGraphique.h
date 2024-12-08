@@ -4,8 +4,7 @@
 #include "Grille.h"
 #include "Fichier.h"
 
-class InterfaceGraphique : public Interface
-{
+class InterfaceGraphique : public Interface{
 private:
   int tailleCellule;
 
