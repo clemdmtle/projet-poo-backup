@@ -103,13 +103,18 @@ int main()
         cerr << "ERROR : nombre invalide " << endl;
     }
 
+    cout << "hey 1" << endl;
     ActualiserJeu *actu = new ActualiserJeu;
+    cout << "hey 2" << endl;
     while (actu->verifierEtatJeu(g, jdlv) == true)
     { // relance le jeu tant qu'il n'est pas fini
         actu->actualiserGrille(g, jdlv, f);
+        cout << "hey 3" << endl;
         sleep_for(seconds(jdlv->getDureeIteration()));
+        cout << "hey 4" << endl;
     }
 
+    cout << "hey 5" << endl;
     cout << "taille du tab" << g->getStock().size();
 
     cout << "taille du tab" << g->getStock().size();
