@@ -114,6 +114,7 @@ int main()
     delete jdlv;
     delete g;
     delete actu;
+    cout << "taille du tab" << g->getStock().size();
     for (int k = 0; k < g->getNbLignes(); k++){
         for (int l = 0; l < g->getNbColonnes(); l++){
             Cellule *stockCell = g->getCelluleStock(k, l);
@@ -122,11 +123,13 @@ int main()
             if (stockCell == transitionCell && stockCell != nullptr)
             {
                 delete stockCell;
+                cout << "taille du tab" << g->getStock().size();
             }
             else
             {
                 if (stockCell != nullptr) delete stockCell;
                 if (transitionCell != nullptr) delete transitionCell;
+                cout << "taille du tab" << g->getStock().size();
             }
         }
     }   
