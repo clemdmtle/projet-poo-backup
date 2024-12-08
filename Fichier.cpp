@@ -36,6 +36,7 @@ vector<int> Fichier::lireFichier()
     {
         cerr << "Erreur à l'ouverture du fichier" << endl;
     }
+    return {};
 }
 
 void Fichier::stockerDonnees(vector<vector<Cellule *>> vect)
