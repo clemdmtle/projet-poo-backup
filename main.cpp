@@ -36,6 +36,8 @@ int main()
 
     Grille *g = new Grille(nbLignes, nbColonnes); // créer un obj grille
 
+    Cellule *c1;
+
     ifstream fichier(path.c_str(), ios::in); // ouvre le fichier
     getline(fichier, aIgnorer);              // on saute la 1e ligne qui contient nblignes nbcolonnes
     for (int i = 0; i < nbLignes; i++)
@@ -51,13 +53,13 @@ int main()
             {
                 etat = !etat;
             }
-            CelluleActive *c1 = new CelluleActive(etat); // créer un obj cellule
+            c1 = new CelluleActive(etat); // créer un obj cellule
             g->setStock(i, j, c1);
             g->setTransition(i, j, c1);
         }
     }
 
-    cout << "Combien d'itérations voulez-vous que le programme effectuer avant de s'arrêter?" << endl;
+    cout << "Combien d'itérations voulez-vous que le programme effectue avant de s'arrêter?" << endl;
     cin >> nb;
     cout << "Quelle durée entre deux itérations voulez-vous instaurer (en secondes)?" << endl;
     cin >> duree;
@@ -66,47 +68,73 @@ int main()
 
     cout << "Combien de cellule obstacle voulez-vous rajouter?" << endl; // demande les cellules obstacles
     cin >> cellObs;
+    
+    vector<pair<int, int>> obstacles;
+    bool erreur=true;
+    while (erreur==true){
+        for (int i = 0; i < cellObs; i++){
+            cout << "Quelle ligne pour la cellule obstacle " + to_string(i) + "?" << endl;
+            cin >> numLigne;
+            cout << "Quelle colonne pour la cellule obstacle " + to_string(i) + "?" << endl;
+            cin >> numColonne;
 
-    for (int i = 0; i < cellObs; i++)
-    {
-        cout << "Quelle ligne pour la cellule obstacle " + to_string(i) + "?" << endl;
-        cin >> numLigne;
-        cout << "Quelle colonne pour la cellule obstacle " + to_string(i) + "?" << endl;
-        cin >> numColonne;
-        cout << "Quel état pour la cellule obstacle " + to_string(i) + "?" << endl;
-        cin >> etatCellObs;
+            if (numLigne < 0 || numColonne < 0 || numLigne >= nbLignes || numColonne >= nbColonnes){
+                cerr << "Vous n'êtes pas dans la bonne plage d'indices, veuillez recommencez." << endl;
+            } else {
+                erreur=false;
+            }
+            
+            
+            etatCellObs=g->etatCellule(numLigne, numColonne);
 
-        Cellule *c2 = new CelluleObstacle(etatCellObs); // change le type de la cellule en cellule obstacle
-        g->setStock(numLigne, numColonne, c2);
+            c1 = new CelluleObstacle(etatCellObs); // change le type de la cellule en cellule obstacle
+            g->setStock(numLigne, numColonne, c1);
+            obstacles.push_back(make_pair(numLigne, numColonne));
+        }
     }
+
+    erreur=true;
 
     // Interface
     int choixInterface;
     cout << "Choississez votre type d'interface: " << endl << "(1)->Interface console" << endl << "(2)->Interface graphique" << endl; // l'utilisateur choisit le mode de fonctionnement
     cin >> choixInterface;
-    if (choixInterface == 1)
-    {
-        InterfaceConsole *ic = new InterfaceConsole;
-        g->addObservers(ic);
-    }
-    else if (choixInterface == 2)
-    {
-        int choixtC;
-        cout << "Rentrez la taille que vous souhaitez pour vos cellule:" << endl;
-        cin >> choixtC;
+    while (erreur==true){
+        if (choixInterface == 1)
+        {
+            InterfaceConsole *ic = new InterfaceConsole;
+            g->addObservers(ic);
+            erreur=false;
+        }
+        else if (choixInterface == 2)
+        {
+            int choixtC;
+            cout << "Rentrez la taille que vous souhaitez pour vos cellule:" << endl;
+            cin >> choixtC;
 
-        InterfaceGraphique *ig = new InterfaceGraphique(choixtC);
-        g->addObservers(ig);
+            InterfaceGraphique *ig = new InterfaceGraphique(choixtC);
+            g->addObservers(ig);
+            erreur=false;
+        }
+        else
+        {
+            cerr << "ERROR : nombre invalide " << endl;
+        }
     }
-    else
-    {
-        cerr << "ERROR : nombre invalide " << endl;
-    }
+
+    cout << "Grille de base : " << endl;
+    g->notify(f);
 
     ActualiserJeu *actu = new ActualiserJeu;
     while (actu->verifierEtatJeu(g, jdlv) == true)
     { // relance le jeu tant qu'il n'est pas fini
         actu->actualiserGrille(g, jdlv, f);
+        for (int i=0; i<obstacles.size(); i++){
+            numLigne=obstacles[i].first;
+            numColonne=obstacles[i].second;
+            c1=new CelluleObstacle(etatCellObs);
+            g->setStock(numLigne,numColonne,c1);
+        }
         sleep_for(seconds(jdlv->getDureeIteration()));
     }
 
