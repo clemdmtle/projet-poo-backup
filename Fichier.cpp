@@ -17,7 +17,7 @@ Fichier::Fichier(string path)
 
 vector<int> Fichier::lireFichier()
 { // permet d'extraire nbcolonnes et nblignes
-    vector<int> tab;
+    vector<int> tab(2);
     ifstream fichier(path.c_str(), ios::in); // ouvre le fichier
     string strChiffre;
 

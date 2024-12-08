@@ -75,6 +75,7 @@ int main()
         cin >> etatCellObs;
 
         Cellule *c2 = new CelluleObstacle(etatCellObs); // change le type de la cellule en cellule obstacle
+        g->setStock(numLigne, numColonne, c2);
     }
 
     // Interface
@@ -108,4 +109,9 @@ int main()
         actu->actualiserGrille(g, jdlv, f);
         sleep_for(seconds(jdlv->getDureeIteration()));
     }
+
+    delete f;
+    delete jdlv;
+    delete g;
+    delete actu;
 }
