@@ -114,4 +114,10 @@ int main()
     delete jdlv;
     delete g;
     delete actu;
+    for (int k=0; k<g->getNbLignes(); k++){
+        for (int l=0; l<g->getNbColonnes(); l++){
+            delete g->getCelluleStock(k, l);
+            delete g->getCelluleTransition(k, l);
+        }
+    }
 }
