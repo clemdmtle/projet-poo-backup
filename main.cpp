@@ -108,6 +108,7 @@ int main()
     cout << "hey 2" << endl;
     while (actu->verifierEtatJeu(g, jdlv) == true)
     { // relance le jeu tant qu'il n'est pas fini
+        cout << "hey 6" << endl; 
         actu->actualiserGrille(g, jdlv, f);
         cout << "hey 3" << endl;
         sleep_for(seconds(jdlv->getDureeIteration()));
