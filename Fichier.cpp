@@ -19,14 +19,15 @@ vector<int> Fichier::lireFichier()
 { // permet d'extraire nbcolonnes et nblignes
     
     ifstream fichier(path.c_str(), ios::in); // ouvre le fichier
-    string nbLignes, nbColonnes;
-
+    string nb;
+    vector<int> tab(2);
     if (fichier)
     {
         cout << "Fichier ouvert avec succès" << endl;
-        getline(fichier, nbLignes, ' ');
-        getline(fichier, nbColonnes, ' ');
-        vector<int> tab={stoi(nbLignes), stoi(nbColonnes)};
+        for(int x=0; x<2; x++){
+            getline(fichier, nb, ' ');
+            tab[x]=stoi(nb);
+        }
          // change le string en int
 
         fichier.close(); // ferme le fichier
