@@ -110,10 +110,8 @@ int main()
         sleep_for(seconds(jdlv->getDureeIteration()));
     }
 
-    delete f;
-    delete jdlv;
-    delete g;
-    delete actu;
+    cout << "taille du tab" << g->getStock().size();
+
     cout << "taille du tab" << g->getStock().size();
     for (int k = 0; k < g->getNbLignes(); k++){
         for (int l = 0; l < g->getNbColonnes(); l++){
@@ -133,5 +131,9 @@ int main()
             }
         }
     }   
+    delete f;
+    delete jdlv;
+    delete g;
+    delete actu;
 
 }
